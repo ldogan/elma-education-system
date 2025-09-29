@@ -1,39 +1,36 @@
-# elma-education-system
-Lightweight School Information System (SIS) using Java, Spring Boot, and MySQL/H2.
+# ELMA – School Information System (Spring Boot)
 
+**ELMA** is a minimal, production-style **School Information System** for managing Students, Teachers, Courses and Grades.
 
-#  ELMA – School Information System
+- **Stack:** Java 17 · Spring Boot 3 · Spring Data JPA · Validation · H2/MySQL
+- **API Docs:** OpenAPI/Swagger at **/swagger-ui.html**
+- **Run:** `mvn spring-boot:run` (H2 in-memory DB by default)
 
-ELMA is a **School Information System (SIS)** built with **Spring Boot**.  
-It provides RESTful APIs for managing **students, teachers, courses, and grades**.  
-The system is designed as a lightweight academic management solution for schools.
-
----
-
-##  Features
-- Student management (create, update, delete, list)  
-- Teacher management and course assignments  
-- Course management (CRUD, course codes, teacher binding)  
-- Enrollment workflow (students ↔ courses)  
-- Grade entry and simple GPA calculation  
-- RESTful API with validation and exception handling  
-- Runs with **H2 in-memory DB** by default, easily switchable to **MySQL**  
-
----
-
-##  Tech Stack
-- **Language:** Java 17  
-- **Framework:** Spring Boot 3 (Web, Data JPA, Validation)  
-- **Database:** H2 (default), MySQL (production-ready)  
-- **Documentation:** OpenAPI/Swagger UI  
-- **Build Tool:** Maven  
-
----
-
-##  Getting Started
-mvn spring-boot:run
-
-### Clone the repository
+## Quick Start
 ```bash
-git clone https://github.com/ldogan/elma-sis.git
-cd elma-sis
+mvn spring-boot:run
+# H2 console: http://localhost:8080/h2-console
+# JDBC URL: jdbc:h2:mem:elmadb
+```
+
+## Switch to MySQL
+Edit `src/main/resources/application.properties` and uncomment the MySQL section.
+
+## REST Endpoints (examples)
+- `POST /api/students` → create student
+- `GET /api/students` → list students
+- `POST /api/students/enroll` → {studentId, courseId}
+- `POST /api/students/grade` → {studentId, courseId, grade}
+- `GET /api/students/{id}/gpa` → average grade (simple)
+
+- `POST /api/teachers` / `GET /api/teachers`
+- `POST /api/courses` / `GET /api/courses`
+
+## Project Name
+Requested name: **ELMA** (no organization name shown in code; generic, interview‑friendly English terms only).
+
+## License
+This project is released under the **MIT License** (see `LICENSE`).
+
+---
+Made with ❤️ using Spring Boot.
